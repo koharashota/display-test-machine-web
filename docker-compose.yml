@@ -1,0 +1,13 @@
+datastore:
+  build: containers/datastore
+  volumes:
+    - share:/share
+
+ruby:
+  build: .
+  ports:
+    - '3000:3000'
+  environment:
+    SAVE_PATH: '/share/screenshots/'
+  volumes_from:
+    - datastore
